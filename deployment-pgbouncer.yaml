@@ -1,0 +1,68 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prod-pgbouncer
+  namespace: prod
+spec:
+  replicas: 1
+  revisionHistoryLimit: 4
+  minReadySeconds: 20
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+     maxUnavailable: 0
+     maxSurge: 50%
+  template:
+    metadata:
+      labels:
+        app: prod-pgbouncer
+        env: prod
+      annotations:
+          sidecar.istio.io/inject: "false"  
+    spec:
+      containers:
+      - name: prod-pgbouncer
+        image: asia.gcr.io/name-project/prod-pgbouncer:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+        resources:
+            requests:
+               cpu: "100m"
+               memory: "200Mi"
+            limits:
+               cpu: "1200m"
+               memory: "1200Mi"
+        # health checks self healing check port 80 response 200,
+        # if containers error (400-500) kubernetes restart the pod
+        readinessProbe:
+          tcpSocket:
+              port: 5432
+          initialDelaySeconds: 8
+          periodSeconds: 5
+        livenessProbe:
+           tcpSocket:
+              port: 5432
+           initialDelaySeconds: 8
+           periodSeconds: 5
+        lifecycle: # (real) zero-downtime for rolling deployment
+          preStop:
+            exec:
+              command: ["sh", "-c", "sleep 20"]    
+---
+# service
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-pgbouncer
+  namespace: prod
+  labels:
+    app: prod-pgbouncer
+spec:
+  selector:
+    app: prod-pgbouncer
+  ports:
+  - port: 5432
+    protocol: TCP
+    targetPort: 5432
+  type: ClusterIP
