@@ -10,5 +10,5 @@ docker push asia.gcr.io/name-project/prod-pgbouncer:v1
 
 ### deploy pgbouncer to k8s gke
 ```
-kubectl apply -f deployment-staging-pgbouncer.yaml
+kubectl apply -f deployment-pgbouncer.yaml
 ```
