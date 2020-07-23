@@ -32,5 +32,4 @@ data:
    max_client_conn = 1000
    default_pool_size = 30
    reserve_pool_size = 5
-   server_idle_timeout = 0
- 
+  
