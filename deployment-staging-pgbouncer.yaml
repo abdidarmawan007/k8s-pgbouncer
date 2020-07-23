@@ -44,7 +44,7 @@ spec:
         lifecycle: # (real) zero-downtime for rolling deployment
           preStop:
             exec:
-              command: ["sh", "-c", "sleep 120"]
+              command: ["sh", "-c", "sleep 180"]
         volumeMounts:
         - name: staging-pgbouncer
           mountPath: /etc/pgbouncer/ # mount config pgbouncher
