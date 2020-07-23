@@ -30,6 +30,6 @@ data:
    server_reset_query = DISCARD ALL
    ignore_startup_parameters = extra_float_digits
    max_client_conn = 1000
-   default_pool_size = 30
-   reserve_pool_size = 5
+   default_pool_size = 25
+   reserve_pool_size = 4
   
