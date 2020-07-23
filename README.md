@@ -10,7 +10,7 @@ docker push asia.gcr.io/zeus-007/zeus-pgbouncer:v1
 
 ### deploy pgbouncer to k8s gke
 ```
-kubectl apply -f configmap-pgbouncher.yaml
+kubectl apply -f configmap-staging-pgbouncher.yaml
 ```
 ```
 kubectl apply -f deployment-staging-pgbouncer.yaml
