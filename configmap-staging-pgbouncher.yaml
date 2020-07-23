@@ -31,6 +31,6 @@ data:
    ignore_startup_parameters = extra_float_digits
    max_client_conn = 1000
    default_pool_size = 30
-   reserve_pool_size = 8
+   reserve_pool_size = 5
    server_idle_timeout = 0
  
