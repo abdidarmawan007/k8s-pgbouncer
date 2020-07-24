@@ -25,11 +25,8 @@ spec:
         ports:
         - containerPort: 5432
         resources:
-            requests:
-               cpu: "300m"
-               memory: "300Mi"
             limits:
-               cpu: "1200m"
+               cpu: "2"
                memory: "1200Mi"       
         readinessProbe:
           tcpSocket:
