@@ -20,6 +20,9 @@ kubectl apply -f deployment-staging-pgbouncer.yaml
 ## Test pgbench for 60 second, 100 client, select only
 ## Cloud SQL Postgresql 11, 4 Core 6GB RAM
 ```
+pgbench -i -h 10.248.11.223 -U postgres postgres
+```
+```
 pgbench -h staging-pgbouncer -c 100 -T 60 -S -n -U postgres postgres
 ```
 ```
