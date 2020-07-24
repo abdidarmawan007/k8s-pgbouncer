@@ -5,8 +5,9 @@ metadata:
   namespace: staging
 data:
   userlist.txt: |
-   "staging-joe" "Staging2423rfwfa131dsdrce"
-   "staging-han" "Staginga2421eJFiwf4ffwew"
+   "staging-email" "Staging2423rfwfa131dsdrce"
+   "staging-frontend" "Staginga2421D23r4ff551"
+   "staging-icarus" "Staginga2421eJFiwf4ffwew"
    "staging-zeus" "Staginga03421roiF43R3FW2"
 
   pgbouncer.ini: |
